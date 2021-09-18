@@ -1,0 +1,36 @@
+.currencyTitle {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.tableItem {
+  background-color: rgba(75, 141, 207, 0.102);
+}
+.baseCurrencySelect {
+  width: 80px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+table {
+  margin-left: auto;
+  margin-right: auto;
+  width: 500px;
+}
+
+td {
+  text-align: center;
+  font-family: "Azeret Mono";
+  font-size: 15px;
+  color: #789;
+}
+
+thead {
+  background-color: rgba(81, 114, 146, 0.534);
+  font-family: "Azeret Mono";
+}
+th {
+  height: 40px;
+}
