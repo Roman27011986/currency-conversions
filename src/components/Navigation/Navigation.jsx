@@ -5,10 +5,22 @@ export default function Navigation () {
       <nav>
         <ul className={styles.navBox}>
           <li>
-              <NavLink to='/' exact className={styles.navBoxItem} activeClassName={styles.active}>Converter</NavLink>
-          </li>
+          <NavLink
+            to='/'
+            exact
+            className={styles.navBoxItem}
+            activeClassName={styles.active}>
+            Converter
+          </NavLink>
+        </li>
+        
           <li>
-              <NavLink to='/СurrentExchangeRatesPage' className={styles.navBoxItem} activeClassName={styles.active}>Сurrent rate</NavLink>
+          <NavLink
+            to='/СurrentExchangeRatesPage'
+            className={styles.navBoxItem}
+            activeClassName={styles.active}>
+            Сurrent rate
+          </NavLink>
           </li>
         </ul>
       </nav>

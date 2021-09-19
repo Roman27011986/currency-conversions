@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {useState} from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
@@ -8,6 +8,7 @@ import { purple } from '@mui/material/colors';
 import { getConverted } from '../../services/apiConverts'
 import { currencies } from '../../currencies/currencies'
 import styles from './ConverterForm.module.css'
+
 const ColorButton = styled(Button)(({ theme }) => ({
   color: theme.palette.getContrastText(purple[500]),
   backgroundColor: purple[500],
@@ -17,10 +18,10 @@ const ColorButton = styled(Button)(({ theme }) => ({
 }));
 
 export default function ConverterForm() {
-    const [fromCurrency, setFromCurrency] = React.useState('EUR');
-    const [toCurrency, setToCurrency] = React.useState('EUR');
-    const [amount, setAmount] = React.useState('');
-    const [currency, setCurrency] = React.useState({});
+    const [fromCurrency, setFromCurrency] = useState('EUR');
+    const [toCurrency, setToCurrency] = useState('USD');
+    const [amount, setAmount] = useState('');
+    const [currency, setCurrency] = useState({});
 
     const handleChange = (event) => {
         switch (event.target.name) {
@@ -59,40 +60,60 @@ export default function ConverterForm() {
           onSubmit={handleSubmit}
       >
         <div >
-        <TextField sx={{width: '28ch',marginRight:'10px'}} onChange={handleChange} value={amount} name='amount' id="outlined-basic" label="amount" variant="outlined" />
+            <TextField sx={{ width: '28ch', marginRight: '10px' }}
+              onChange={handleChange}
+              value={amount}
+              name='amount'
+              id="outlined-basic"
+              label="amount"
+              variant="outlined"
+              type='number'
+              required
+            />
             <TextField
+              id="outlined-select-currency"
+              name='from'
+              select
+              label={fromCurrency}
+              value={fromCurrency}
+              onChange={handleChange}
               sx={{marginRight:'10px'}}
-          id="outlined-select-currency"
-          select
-          label={fromCurrency}
-                  value={fromCurrency}
-                  name='from'
-          onChange={handleChange}
-        >
+            >
+              
           {currencies.map((option) => (
             <MenuItem key={option.value} value={option.value}>
               {option.label}
             </MenuItem>
           ))}
-              </TextField>
+              
+            </TextField>
+            
               <TextField
                 id="outlined-select-currency"
+                name='to'
                 select
                 label={toCurrency}
                 value={toCurrency}
-                name='to'
                 onChange={handleChange}
-        >
-          {currencies.map((option) => (
-            <MenuItem key={option.value} value={option.value}>
-              {option.label}
-            </MenuItem>
-          ))}
-        </TextField>
-          </div>
-          <ColorButton sx={{marginTop:'10px',fontFamily:'Azeret Mono'}} type='submit' variant="contained" disabled = { amount ? false : true } >Convert</ColorButton>
+            >
+              
+                {currencies.map((option) => (
+                   <MenuItem key={option.value} value={option.value}>
+                      {option.label}
+                   </MenuItem>
+                ))}
+              
+              </TextField>
+        </div>
+              <ColorButton
+                sx={{ marginTop: '10px', fontFamily: 'Azeret Mono' }}
+                type='submit' variant="contained"
+                disabled={amount ? false : true} >
+                Convert
+              </ColorButton>
+
             </Box>
           {currency[toCurrency] && <p className={styles.text}>{toCurrency ? currency[toCurrency] : ''}</p>}
-            </>
+      </>
   );
 };

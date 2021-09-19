@@ -5,8 +5,8 @@
 }
 .navBoxItem {
   font-family: "Azeret Mono";
-  font-size: 20px;
-  color: #789;
+  font-size: 17px;
+  color: rgb(255, 255, 255);
 }
 .active {
   color: rgba(15, 12, 12, 0.931);

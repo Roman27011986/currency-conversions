@@ -1,0 +1,8 @@
+.appBar {
+  position: fixed;
+  top: 0px;
+  left: 0;
+  right: 0;
+  z-index: 77;
+  background-color: rgb(137, 145, 153);
+}
